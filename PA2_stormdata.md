@@ -168,8 +168,8 @@ types <- c("ASTRONOMICAL LOW TIDE", "AVALANCHE", "BLIZZARD", "COASTAL FLOOD",
            "COLD / WIND CHILL", "DEBRIS FLOW", "DENSE FOG", "DENSE SMOKE", "DROUGHT","DUST DEVIL","DUST STORM","EXCESSIVE HEAT","EXTREME COLD/WIND CHILL","FLASH FLOOD","FLOOD","FREEZING FOG","FROST/FREEZE","FUNNEL CLOUD","HAIL","HEAT","HEAVY RAIN","HEAVY SNOW","HIGH SURF","HIGH WIND","HURRICANE/TYPHOON","ICE STORM","LAKESHORE FLOOD","LAKE-EFFECT SNOW","LIGHTNING","MARINE HAIL","MARINE HIGH WIND","MARINE STRONG WIND","MARINE THUNDERSTORM WIND","RIP CURRENT","SEICHE", "SLEET","STORM SURGE/TIDE","STRONG WIND", "THUNDERSTORM WIND","TORNADO","TROPICAL DEPRESSION","TROPICAL STORM","TSUNAMI","VOLCANIC ASH","WATERSPOUT","WILDFIRE","WINTER STORM","WINTER WEATHER","LANDSLIDE")
 ```
 
-There are 985 levels of the EVTYPE variable. 
-The EVTYPE variable should contain the 48 levels specified in the data documentation. 
+There are 985 levels of the `EVTYPE` variable. 
+The `EVTYPE` variable should contain the 48 levels specified in the data documentation. 
 
 Steps 1-4 below creates the health outcome data set to be used for reporting the population health results. 
 
@@ -208,7 +208,7 @@ matched <-  categories[(categories %in% types)]
 ```
 880368 entries are removed when including only data for which a single fatality or injury occurred.
 
-There are 220 unique categories in the EVTYPE variable in the preliminary injury and fatality data. 
+There are 220 unique categories in the `EVTYPE` variable in the preliminary injury and fatality data. 
 
 ### Health outcomes: Step 2 - Processing date data
 
@@ -232,9 +232,9 @@ healthdata$BGN_DATE <- mdy_hms(healthdata$BGN_DATE)
 ```
 While the end date may be preferred as a measure of the timing of the event (for the purpose of assessing the outcome of the event), 40% (n=8854) of the observations for this variable in the health outcome data is missing.
 0 beginning dates are missing. 
-Taken together, it is preferable to use only BGN_DATE as the indicator of the timing of the event. 
+Taken together, it is preferable to use only `BGN_DATE` as the indicator of the timing of the event. 
 
-END_DATE is removed.  
+`END_DATE` is removed.  
 
 ```r
 healthdata$END_DATE=NULL
@@ -443,7 +443,7 @@ econcats <- as.character(unique(econdata$EVTYPE))
 matched <-  econcats[(econcats %in% types)]
 ```
 
-There are 431 unique categories in the EVTYPE variable in the preliminary crop and property damage data.
+There are 431 unique categories in the `EVTYPE` variable in the preliminary crop and property damage data.
 
 ### Economy: Step 2 - Processing date data
 
@@ -472,17 +472,17 @@ any(is.na(econdata$BGN_DATE))
 # reformat BGN_DATE variable to date format
 econdata$BGN_DATE <- mdy_hms(econdata$BGN_DATE) 
 ```
-Observations for END_DATE are missing in the economic data.
+Observations for `END_DATE` are missing in the economic data.
 0 observations are missing data for the beginning dates. 
-Taken together, it is preferable to use only BGN_DATE as the indicator of the timing of the event. 
+Taken together, it is preferable to use only `BGN_DATE` as the indicator of the timing of the event. 
 
-END_DATE is removed.  
+`END_DATE` is removed.  
 
 ```r
 econdata$END_DATE=NULL
 ```
 
-### Economy: Step 3 - Cleaning variables: PROPDMG, PROPDMGEXP, CROPDMG, CROPDMGEXP
+### Economy: Step 3 - Cleaning variables: `PROPDMG`, `PROPDMGEXP`, `CROPDMG`, `CROPDMGEXP`
 
 variables are combined to give the numeric value of damage to crops and property.
 
@@ -576,7 +576,7 @@ sumMismatch_1996 <- mismatch %>%
                   CROP = sum(CROPDMGNUM))
 ```
 
-### Economy: Step 5 - Integrate EVTYPE data to create final set
+### Economy: Step 5 - Integrate `EVTYPE` data to create final set
 
 
 ```r
@@ -743,7 +743,7 @@ ggarrange(pophealth, pophealthlog, labels=(c("A","B")), ncol=2, nrow=1, common.l
 
 ![](PA2_stormdata_files/figure-html/health_data_results-1.png)<!-- -->
 
-Figure 1. Fatality against injury counts over the date span of the selected data (Jan 1996 to November 2011). Plot **A**:  top 10 events by injury and fatality are shown on their measured scale. Events causing death and injury are correlated, with 12 events comprising the top ten lists. Tornado, Excessive heat and flash flooding are the most deadly by fatality count over approx. 16 years. Tornado, flood, and excessive heat cause the greatest injury. Plot **B**: The same data, plotted on the log_10 scale, better displaying the impact of the lower-ranked events comprising the top 10 lists.   
+Figure 1. Fatality against injury counts over the date span of the selected data (Jan 1996 to November 2011). Plot **A**:  top 10 events by injury and fatality are shown on their measured scale. Events causing death and injury are correlated, with 12 events comprising the top ten lists. Tornado, Excessive heat and flash flooding are the most deadly by fatality count over approx. 16 years. Tornado, flood, and excessive heat cause the greatest injury. Plot **B**: The same data, plotted on the log_10 scale, better displaying the relative impact of the lower-ranked events comprising the top 10 lists.   
 
 ### Economic Outcomes
 
@@ -800,3 +800,10 @@ econ +  geom_point(size = 3, aes(col = EVTYPE)) +
 ![](PA2_stormdata_files/figure-html/econ_data_results-1.png)<!-- -->
 
 Figure 2. Total damage to crops and property by event type over the selected date range (January 1996 to November 2011). There is some correlation between events causing damage to crops and property, with 14 events comprising the respective top 10 lists. However, there are clearly important differences between event types affecting crops, and event types affecting property. Floods, hurricanes and storm/tide surges are the most damaging to property, and drought is the most damaging to crops. On their respective axes, these far outweigh the damage caused by other events. In general, property damage costs far outweigh crop damage costs. Not shown is the nature of these events: whether or not the damage is cumulative or arises from one-off events.  
+
+## Resources
+
+* National Weather Service [Storm Data Documentation](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf)
+
+* National Climatic Data Center Storm Events [FAQ](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf)
+
