@@ -6,4 +6,4 @@ http://rpubs.com/rphardy/NOAAstormdatafinal
 
 to do:
 - add  National Weather Service Storm Data Documentation 
-       National Climatic Data Center Storm Events FAQ links
+- add  National Climatic Data Center Storm Events FAQ links
