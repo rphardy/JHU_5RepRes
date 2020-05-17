@@ -1,7 +1,6 @@
-# RepRes_Project2
-Reproducible Research: NOAA stormdata Assignment
-
-See published (Rpub) analysis at:
+# Reproducible Research Project 2
+deliverable:
+published (Rpub) analysis, viewable at:
 http://rpubs.com/rphardy/NOAAstormdatafinal
 
 ## Resources
