@@ -1,6 +1,6 @@
-# Reproducible Research Project 2
-deliverable:
-- published (Rpub) analysis, viewable at:
+## Reproducible Research Project 2
+### deliverable
+published (Rpub) analysis, viewable at:
 http://rpubs.com/rphardy/NOAAstormdatafinal
 
 ## Resources
