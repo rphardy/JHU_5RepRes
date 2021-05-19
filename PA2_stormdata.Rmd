@@ -1,5 +1,5 @@
 ---
-title: "Reproducible Research - Peer Assessment 2"
+title: "Reproducible Research"
 author: "[Richard Hardy](https://github.com/rphardy/RepRes_Project2)"
 date: "`r Sys.Date()`"
 output: 
